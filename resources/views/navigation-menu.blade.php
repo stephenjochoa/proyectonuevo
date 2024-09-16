@@ -13,9 +13,55 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Inicio') }}
                     </x-nav-link>
                 </div>
+
+                <div class="relative hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" x-data="{ open: false }">
+                    <!-- El código original -->
+                    <x-nav-link href="#" @click.prevent="open = !open" :active="request()->routeIs('formularios/*')">
+                        {{ __('Formularios') }}
+                    </x-nav-link>
+
+                    <!-- El Dropdown -->
+                    <div x-show="open" @click.away="open = false" class="absolute z-50 bg-white shadow-lg rounded-md w-48"
+                        style="top: 100%; left: 0; margin-top: 10px;"
+                        x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="transform opacity-0 scale-95"
+                        x-transition:enter-end="transform opacity-100 scale-100"
+                        x-cloak>
+                        <a href="/formularios/create" class="block px-4 py-2 text-gray-800 hover:bg-gray-200" :active="request()->routeIs('/formularios/create')">
+                            {{ __('Crear Formularios') }}
+                        </a>
+                        <a href="/formularios/#/edit" class="block px-4 py-2 text-gray-800 hover:bg-gray-200" :active="request()->routeIs('/formularios/#/edit')">
+                            {{ __('Lista de Formularios') }}
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="relative hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" x-data="{ open: false }">
+                    <!-- El código original -->
+                    <x-nav-link href="#" @click.prevent="open = !open" :active="request()->routeIs('Informes/*')">
+                        {{ __('Informes') }}
+                    </x-nav-link>
+
+                    <!-- El Dropdown -->
+                    <div x-show="open" @click.away="open = false" class="absolute z-50 bg-white shadow-lg rounded-md w-48"
+                        style="top: 100%; left: 0; margin-top: 10px;"
+                        x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="transform opacity-0 scale-95"
+                        x-transition:enter-end="transform opacity-100 scale-100"
+                        x-cloak>
+
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                            {{ __('Listado de Informes') }}
+                        </a>
+
+
+                    </div>
+                </div>
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -141,6 +187,18 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="#{{-- {{ route('dashboard') }} --}}" :active="request()->routeIs('formularios')">
+                {{ __('Formularios') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="#{{-- {{ route('dashboard') }} --}}" :active="request()->routeIs('informes')">
+                {{ __('Informes') }}
             </x-responsive-nav-link>
         </div>
 

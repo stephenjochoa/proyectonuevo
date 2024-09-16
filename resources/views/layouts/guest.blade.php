@@ -13,6 +13,11 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script>
+            document.getElementById('dropdownMenuButton').addEventListener('click', function () {
+                document.getElementById('dropdownMenu').classList.toggle('hidden');
+            });
+        </script>
 
         <!-- Styles -->
         @livewireStyles
